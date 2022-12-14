@@ -1,20 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
-</head>
-<body>
-    <h1>Books</h1>
-    <div>
-        <a href="/books/new">Add Book</a>
+<% layout('layouts/boilerplate') %>
+<ul>
+  <h1 class="mb-3 text-center">Books</h1>
+  <% for(let book of books) { %>
+  <div class="card mb-3">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-fluid" src="<%= book.image%>" alt="" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <p class="card-text">
+            <small class="text-muted"><%=book.author %></small>
+          </p>
+          <p class="card-text"><%= book.description %></p>
+          <a href="books/<%=book._id%>" class="btn btn-dark"
+            >View <%= book.title %>
+          </a>
+        </div>
+      </div>
     </div>
-    <ul>
-        <% for(const book of books) { %>
-            <li><a href="books/<%= book._id %>"><%= book.title %></a></li>
-        <% } %> 
-    </ul>
-</body>
-</html>
+  </div>
+  <% } %>
+</ul>

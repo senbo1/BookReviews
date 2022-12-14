@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
-<body>
-    <h1><%= book.title %></h1>
-    <h2><%= book.price %></h2>
-    <h3><%= book.description %></h3>
-    <footer>
-    <a href="<%= book.goodreads %> ">goodreads</a>
-    <a href="/books">Home</a>
-    <a href="/books/<%=book._id%>/edit ">Edit</a>
-    </footer>
-    <p>
-        <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
-            <button>Delete</button>
+<% layout('layouts/boilerplate') %>
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card mb-3">
+      <img src="<%=book.image%>" class="card-img-top" alt="<%= book.title %>" />
+      <div class="card-body">
+        <h5 class="card-title"><%= book.title %></h5>
+        <p class="card-text"><%= book.description %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item font-monospace"><%= book.author %></li>
+      </ul>
+      <div class="card-body">
+        <a href="/books/<%=book._id%>/edit" class="card-link btn btn-dark"
+          >Edit</a
+        >
+        <form class="d-inline" action="/books/<%=book._id%>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">Delete</button>
         </form>
-    </p>
-</body>
-</html>
+      </div>
+    </div>
+  </div>
+</div>
